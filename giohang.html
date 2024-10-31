@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,9 +28,16 @@
 </head>
 
 <body>
+    
+    <div class="back-button">
+        <a href="index.html"> <!--html của trang chủ--> 
+          <img src="img/chitietsanpham/back arrow.png" alt="Back" />
+          Trang chủ
+        </a>
+    </div>
     <section style="min-height: 85vh">
         <script>addHeader();</script>
-
+        <h1 class="cart-title"> Giỏ Hàng Của Bạn</h1>
         <table class="listSanPham"></table>
         
     </section> <!-- End Section -->
@@ -50,10 +56,8 @@
             addProductToTable(cartUser);
         }
     </script>
-
+    <script>addPlc();</script>
     <div class="footer"><script>addFooter();</script></div>
-
-    <i class="fa fa-arrow-up" id="goto-top-page" onclick="gotoTop()"></i>
 </body>
 
 </html>

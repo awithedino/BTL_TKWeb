@@ -1,7 +1,6 @@
 /* Plc */
 .plc {
 	background: #dae2dc;
-	/* overflow: hidden; */
 	font-size: 15px;
 	color: #333;
 	border-top: 1px solid #bbb;
@@ -28,15 +27,14 @@
 
 /* ============= Footer ============= */
 .footer {
-	position: relative;
+	/* position: relative; */
 	/* height: 40px; */
 	width: 100%;
 	background: #476;
 }
 
 .copy-right {
-	/* position: absolute; */
-	/* bottom: 0; */
+	bottom: 0;
 	width: 100%;
 	text-align: center;
 	line-height: 40px;

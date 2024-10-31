@@ -1,8 +1,13 @@
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
 .listSanPham {
-	margin: 50px auto;
+	margin: 10px auto 50px;
     border-collapse: collapse;
     width: 100%;
+}
+
+.cart-title {
+    margin-top: 10px;
+    text-align: center;
 }
 
 /* thêm border và padding cho th */
@@ -135,3 +140,26 @@
 .xoaHet:hover {
     background-color: rgb(224, 65, 65);
 }
+
+/* Nút trở về trang chủ */
+
+.back-button {
+    position: absolute;
+    top: 12%;
+    left: 10%;
+
+  }
+  
+  .back-button a {
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items:center;
+  }
+  
+  .back-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+

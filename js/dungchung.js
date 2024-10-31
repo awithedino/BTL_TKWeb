@@ -214,8 +214,7 @@ function addFooter() {
         <span id="closebtn">&otimes;</span>
     </div>
     <div class="copy-right">
-        <p><a href="index.html">LDD Phone Store</a> - All rights reserved © 2021 - Designed by
-            <span style="color: #eee; font-weight: bold">group 15th</span></p>
+        <p><a href="index.html">4 TL Store</a> - All rights reserved © 2024 - Designed by Group 4 TL
     </div>`);
 }
 
@@ -224,13 +223,13 @@ function addPlc() {
     <div class="plc">
         <section>
             <ul class="flexContain">
-                <li>Giao hàng hỏa tốc trong 1 giờ</li>
+                <li>Giao hàng toàn quốc</li>
                 <li>Thanh toán linh hoạt: tiền mặt, visa / master, trả góp</li>
                 <li>Trải nghiệm sản phẩm tại nhà</li>
-                <li>Lỗi đổi tại nhà trong 1 ngày</li>
+                <li>Lỗi đổi tại nhà trong 7 ngày đối với máy mới</li>
                 <li>Hỗ trợ suốt thời gian sử dụng.
                     <br>Hotline:
-                    <a href="tel:12345678" style="color: #288ad6;">12345678</a>
+                    <a href="tel:0123456789" style="color: #288ad6;">0123456789</a>
                 </li>
             </ul>
         </section>
