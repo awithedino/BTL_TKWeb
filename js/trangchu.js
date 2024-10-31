@@ -207,7 +207,7 @@ function addKhungSanPham(tenKhung, color, filter, len, ele) {
 
 	// mở tag
 	var s = `<div class="khungSanPham" style="` + borderColor + `">
-				<h3 class="tenKhung" style="` + gradient + `">* ` + tenKhung + ` *</h3>
+				<h3 class="tenKhung" style="` + gradient + `"> ` + tenKhung + ` </h3>
 				<div class="listSpTrongKhung flexContain">`;
 
 	// thêm các <li> (sản phẩm) vào tag
