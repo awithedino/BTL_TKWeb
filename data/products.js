@@ -927,12 +927,12 @@ var list_products = [{
     "rateCount": 0,
     "promo": {
         "name": "giareonline",
-        "value": ""
+        "value": "750.000"
     },
     "detail": {
         "screen": "6.5' HD, Tần số 144Hz",
-        "camera": "Camera giọt nước 20MP như mù",
-        "cameraFront": "Cụm 5 cam siêu mờ 10MP",
+        "camera": "Cụm 5 cam siêu mờ 20MP",
+        "cameraFront": "Camera giọt nước 10MP như mù",
         "cpu": "Snapdragon 8",
         "ram": "8 GB",
         "rom": "64 GB",
@@ -941,5 +941,27 @@ var list_products = [{
     },
     "masp": "Sam10"
 },
-
+{
+    "name": "iPhone 6S Like New 99%",
+    "company": "Apple",
+    "img": "img/products/iphone-6.jpg",
+    "price": "1.390.000",
+    "star": 0,
+    "rateCount": 0,
+    "promo": {
+        "name": "giareonline",
+        "value": "969.000"
+    },
+    "detail": {
+        "screen": "5.8' HD+",
+        "camera": "Camera 12MP",
+        "cameraFront": "10MP",
+        "cpu": "Apple A6 Bionic",
+        "ram": "3GB",
+        "rom": "64GB",
+        "waterProof": "IP58",
+        "battery": "1110 mAh, có sạc nhanh như rùa"
+    },
+    "masp": "App10"
+},
 ]
