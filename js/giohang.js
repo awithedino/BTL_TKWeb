@@ -1,6 +1,7 @@
 var cart = []; // Global cart variable to hold products
 window.onload = function () {
     khoiTao();
+    addProductToTable();
 
     // Autocomplete for search box
     autocomplete(document.getElementById('search-box'), list_products);
@@ -15,9 +16,10 @@ window.onload = function () {
 
 // Function to add products to the displayed table
 function addProductToTable() {
-    var table = document.getElementsByClassName('listSanPham')[0];
+    const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+    const table = document.getElementsByClassName('listSanPham')[0];
 
-    var s = `
+    let s = `
         <tbody>
             <tr>
                 <th>STT</th>
@@ -29,7 +31,7 @@ function addProductToTable() {
                 <th>Xóa</th>
             </tr>`;
 
-    if (cart.length == 0) {
+    if (guestCart.length === 0) {
         s += `
             <tr>
                 <td colspan="7"> 
@@ -43,42 +45,31 @@ function addProductToTable() {
         return;
     }
 
-    var totalPrice = 0;
-    for (var i = 0; i < cart.length; i++) {
-        var masp = cart[i].ma;
-        var soluongSp = cart[i].soluong;
-        var p = timKiemTheoMa(list_products, masp);
-        var price = (p.promo.name == 'giareonline' ? p.promo.value : p.price);
-        var thoigian = new Date(cart[i].date).toLocaleString();
-        var thanhtien = stringToNum(price) * soluongSp;
+    let totalPrice = 0;
+    guestCart.forEach((item, index) => {
+        const product = timKiemTheoMa(list_products, item.ma);
+        const price = product.promo.name === 'giareonline' ? product.promo.value : product.price;
+        const totalItemPrice = stringToNum(price) * item.soluong;
+        const dateAdded = new Date(item.date).toLocaleString();
 
         s += `
             <tr>
-                <td>` + (i + 1) + `</td>
-                <td class="noPadding imgHide">
-                    <a target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `" title="Xem chi tiết">
-                        ` + p.name + `
-                        <img src="` + p.img + `">
-                    </a>
-                </td>
-                <td class="alignRight">` + price + ` ₫</td>
-                <td class="soluong">
-                    <button onclick="giamSoLuong('` + masp + `')"><i class="fa fa-minus"></i></button>
-                    <input size="1" onchange="capNhatSoLuongFromInput(this, '` + masp + `')" value=` + soluongSp + `>
-                    <button onclick="tangSoLuong('` + masp + `')"><i class="fa fa-plus"></i></button>
-                </td>
-                <td class="alignRight">` + numToString(thanhtien) + ` ₫</td>
-                <td style="text-align: center">` + thoigian + `</td>
-                <td class="noPadding"> <i class="fa fa-trash" onclick="xoaSanPhamTrongGioHang(` + i + `)"></i> </td>
+                <td>${index + 1}</td>
+                <td>${product.name}</td>
+                <td class="alignRight">${price} ₫</td>
+                <td class="soluong">${item.soluong}</td>
+                <td class="alignRight">${numToString(totalItemPrice)} ₫</td>
+                <td style="text-align: center">${dateAdded}</td>
+                <td class="noPadding"> <i class="fa fa-trash" onclick="xoaSanPhamTrongGioHang(${index})"></i> </td>
             </tr>
         `;
-        totalPrice += thanhtien;
-    }
+        totalPrice += totalItemPrice;
+    });
 
     s += `
             <tr style="font-weight:bold; text-align:center">
                 <td colspan="4">TỔNG TIỀN: </td>
-                <td class="alignRight">` + numToString(totalPrice) + ` ₫</td>
+                <td class="alignRight">${numToString(totalPrice)} ₫</td>
                 <td class="thanhtoan" onclick="thanhToan()"> Thanh Toán </td>
                 <td class="xoaHet" onclick="xoaHet()"> Xóa hết </td>
             </tr>
@@ -88,35 +79,62 @@ function addProductToTable() {
     table.innerHTML = s;
 }
 
+
 // Function to remove a product from the cart
-function xoaSanPhamTrongGioHang(i) {
-    if (window.confirm('Xác nhận hủy mua')) {
-        cart.splice(i, 1);
-        capNhatMoiThu();
+function xoaSanPhamTrongGioHang(index) {
+    // Lấy giỏ hàng từ localStorage
+    let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+
+    // Xóa sản phẩm ở vị trí 'index' khỏi mảng guestCart
+    if (index >= 0 && index < guestCart.length) {
+        guestCart.splice(index, 1);
+
+        // Cập nhật lại guestCart trong localStorage
+        localStorage.setItem("guestCart", JSON.stringify(guestCart));
+
+        // Hiển thị thông báo sản phẩm đã được xóa
+        addAlertBox("Sản phẩm đã được xóa khỏi giỏ hàng", "#FF6347", "#fff", 3000);
+
+        // Cập nhật lại giao diện bảng giỏ hàng
+        addProductToTable();
+
+        // Cập nhật số lượng trên biểu tượng giỏ hàng
+        capNhat_ThongTin_CurrentUser();
+    } else {
+        addAlertBox("Không thể xóa sản phẩm", "#FF6347", "#fff", 3000);
     }
 }
 
 // Function to process the payment
 function thanhToan() {
-    if (!cart.length) {
+    const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+    if (!guestCart.length) {
         addAlertBox('Không có mặt hàng nào cần thanh toán !!', '#ffb400', '#fff', 2000);
         return;
     }
     if (window.confirm('Thanh toán giỏ hàng ?')) {
-        // Handle payment processing without user data
-        cart = []; // Clear the cart after payment
+        localStorage.removeItem("guestCart"); // Xóa giỏ hàng sau khi thanh toán
         addAlertBox('Các sản phẩm đã được gửi vào đơn hàng và chờ xử lý.', '#17c671', '#fff', 4000);
-        capNhatMoiThu(); // Refresh the cart display
+        
+        addProductToTable();
+        capNhat_ThongTin_CurrentUser();
     }
 }
 
 // Function to clear the cart
 function xoaHet() {
-    if (cart.length) {
+    const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+    if (guestCart.length) {
         if (window.confirm('Bạn có chắc chắn muốn xóa hết sản phẩm trong giỏ !!')) {
-            cart = [];
-            capNhatMoiThu();
+            localStorage.removeItem("guestCart"); // Xóa hoàn toàn khỏi localStorage
+
+            addAlertBox("Đã xóa toàn bộ sản phẩm trong giỏ hàng", "#FF6347", "#fff", 3000);
+
+            addProductToTable();
+            capNhat_ThongTin_CurrentUser();
         }
+    } else {
+        addAlertBox("Giỏ hàng đã trống", "#FF6347", "#fff", 3000);
     }
 }
 
@@ -173,3 +191,4 @@ function capNhatMoiThu() {
     // Update on header if needed
     capNhat_ThongTin_CurrentUser();
 }
+

@@ -68,6 +68,7 @@ function addEventCloseAlertButton() {
 
 function themVaoGioHang(masp, productName) {
     let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+    
     let product = guestCart.find(p => p.ma === masp);
 
     if (product) {
@@ -77,7 +78,8 @@ function themVaoGioHang(masp, productName) {
     }
 
     localStorage.setItem("guestCart", JSON.stringify(guestCart));
-    alert(`Đã thêm ${productName} vào giỏ hàng.`);
+    addAlertBox(`Đã thêm ${productName} vào giỏ hàng`, '#4CAF50', '#fff', 3000);
+    
     capNhat_ThongTin_CurrentUser();
 }
 
