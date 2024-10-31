@@ -944,7 +944,7 @@ var list_products = [{
 {
     "name": "iPhone 6S Like New 99%",
     "company": "Apple",
-    "img": "img/products/iphone-6.jpg",
+    "img": "img/products/iphone-6s.jpg",
     "price": "1.390.000",
     "star": 0,
     "rateCount": 0,
