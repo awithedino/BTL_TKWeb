@@ -896,7 +896,7 @@ var list_products = [{
     "masp": "Opp9"
 },	
 {
-    "name": "Nokia 100% vàng nguyên khối",
+    "name": "Nokia 100% 24K Carat Gold",
     "company": "Nokia",
     "img": "img/products/nokia-gold.jpg",
     "price": "999.999.999",
