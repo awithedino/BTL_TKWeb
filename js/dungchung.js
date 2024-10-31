@@ -166,28 +166,6 @@ function addProduct(p, ele, returnString) {
     return addToWeb(product, ele, returnString);
 }
 
-function addTopNav() {
-    document.write(`    
-	<div class="top-nav group">
-        <section>
-            <div class="social-top-nav">
-                <a class="fa fa-facebook"></a>
-                <a class="fa fa-twitter"></a>
-                <a class="fa fa-google"></a>
-                <a class="fa fa-youtube"></a>
-            </div>
-            <ul class="top-nav-quicklink flexContain">
-                <li><a href="index.html"><i class="fa fa-home"></i> Trang chủ</a></li>
-                <li><a href="#"><i class="fa fa-newspaper-o"></i> Tin tức</a></li>
-                <li><a href="#"><i class="fa fa-handshake-o"></i> Tuyển dụng</a></li>
-                <li><a href="#"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
-                <li><a href="#"><i class="fa fa-wrench"></i> Bảo hành</a></li>
-                <li><a href="lienhe.html"><i class="fa fa-phone"></i> Liên hệ</a></li>
-            </ul>
-        </section>
-    </div>`);
-}
-
 function addHeader() {
     document.write(`        
 	<div class="header group">
