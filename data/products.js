@@ -918,5 +918,28 @@ var list_products = [{
     },
     "masp": "Nok0"
 },	
+{
+    "name": "Samsung Galaxy A31 Like New 75%",
+    "company": "Samsung",
+    "img": "img/products/samsung-a31.jpg",
+    "price": "999.999",
+    "star": 0,
+    "rateCount": 0,
+    "promo": {
+        "name": "giareonline",
+        "value": ""
+    },
+    "detail": {
+        "screen": "6.5' HD, Tần số 144Hz",
+        "camera": "Camera giọt nước 20MP như mù",
+        "cameraFront": "Cụm 5 cam siêu mờ 10MP",
+        "cpu": "Snapdragon 8",
+        "ram": "8 GB",
+        "rom": "64 GB",
+        "waterProof": "IP58",
+        "battery": "4500 mAh, sạc nhanh 100W"
+    },
+    "masp": "Sam10"
+},
 
 ]
