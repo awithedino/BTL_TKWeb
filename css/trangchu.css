@@ -1,8 +1,8 @@
 
 /* Dropdown From w3 */
 	.dropbtn {
-	    background-color: #409cd5;
-	    color: white;
+	    background-color: #fff765;
+	    color: rgb(0, 0, 0);
 	    padding: 10px 14px;
 	    font-size: 15px;
 	    border: none;
@@ -10,6 +10,7 @@
 	    cursor: pointer;
 		margin-bottom: 5px;
 		transition-duration: .3s;
+		font-weight: bold;
 	}	
 	.dropbtn:after {
 		/* kí tự mũi tên > */
@@ -28,7 +29,6 @@
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
 		/* mặc địng là xoay 90 độ => bị ẩn đi */
 	    transform: rotateX(90deg);
-	    transition-duration: .3s;
 	}
 	.dropdown-content a {
 	    color: #444;
