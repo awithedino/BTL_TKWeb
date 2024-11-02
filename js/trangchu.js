@@ -17,7 +17,7 @@ window.onload = function () {
 		loop: true,
 		smartSpeed: 450,
 		autoplay: true,
-		autoplayTimeout: 3500
+		autoplayTimeout: 3500*1.5
 	});
 
 	// autocomplete cho khung tim kiem
@@ -53,11 +53,12 @@ window.onload = function () {
 		var yellow_red = ['#ff9c00', '#ec1f1f'];
 		var blue = ['#42bcf4', '#004c70'];
 		var green = ['#5de272', '#007012'];
+		var pink_purple = ['#ad88c6', '#7469b6']
 
 		// Thêm các khung sản phẩm
 		var div = document.getElementsByClassName('contain-khungSanPham')[0];
 		addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat', 'sort=rateCount-decrease'], soLuong, div);
-		addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop', 'sort=rateCount-decrease'], soLuong, div);
+		addKhungSanPham('TRẢ GÓP 0%', pink_purple, ['promo=tragop', 'sort=rateCount-decrease'], soLuong, div);
 		addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong, div);
 		addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000', 'sort=price'], soLuong, div);
 	}
