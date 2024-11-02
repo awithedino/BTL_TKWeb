@@ -16,8 +16,8 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #FCF101;
+    color: rgb(0, 0, 0);
 }
 .listSanPham td {
     border: 1px solid #ddd;
@@ -40,7 +40,7 @@
 .listSanPham tr:not(:last-child):hover {background-color: #e5e2e2;}
 
 /* Last child là dòng tổng tiền */
-.listSanPham tr:last-child { background-color: rgb(203, 255, 208); }
+.listSanPham tr:last-child { background-color: #fbf473;}
 
 /* Số lượng */
 .listSanPham .soluong {
@@ -82,15 +82,6 @@
     text-decoration: underline;
 }
 
-/* Hình ảnh sản phẩm */
-.imgHide img {
-    position: absolute;
-    right: -130px;
-    width: 150px;
-    height: 0;
-    border-radius: 10px;
-    transition-duration: .1s;
-}
 .imgHide a:hover img {
     height: 150px;
 }
@@ -100,8 +91,6 @@
     text-align: right;
     padding-right: 30px;  
 }
-
-
 
 /* Nút xóa */
 .fa-trash {
@@ -123,12 +112,12 @@
     font-size: 1.5em;
     padding: 10px 15px;
     font-weight: bold;
-    background-color: rgb(149, 248, 157);
+    background-color: #fff531;
     cursor: pointer;
     transition-duration: .2s;
 }
 .thanhtoan:hover {
-    background-color: #4CAF50; 
+    background-color: #f6ff00; 
 }
 
 .xoaHet {
