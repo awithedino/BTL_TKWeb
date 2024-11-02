@@ -44,10 +44,6 @@
 			width: 200px;
 			height: 200px;
 		}
-		/* Di chuyen anh? len tren */
-		.sanPham a:hover > img {
-			margin: 5px auto 25px;
-		}
 		/* Ten san pham */
 		.sanPham h3 {
 			display: block;
@@ -79,25 +75,6 @@
 		    line-height: 15px;
 		}
 	/* ===== End Price ===== */
-
-	/* Rating */
-		.sanPham .ratingresult {
-			padding: 5px 10px;
-		}
-		.sanPham .ratingresult span {
-		    display: inline-block;
-		    /*position: relative;*/
-		    top: 1px;
-		    margin-left: 5px;
-		    vertical-align: middle;
-		    text-decoration: none;
-		    font-size: 12px;
-		    color: #777;
-		}
-		.fa-star, .fa-star-o {
-			color: orange;
-		}
-	/* ===== End Rating ===== */
 
 	/* Khuyen mai */
 		/* label la tag khuyen mai */
