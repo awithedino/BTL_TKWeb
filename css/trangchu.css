@@ -1,29 +1,7 @@
-.companyMenu {
-	margin: 10px 0 30px; 
-}
-
-.companyMenu a {
-    border: 2px solid #fff;
-    height: 40px;
-    line-height: 40px;
-    transition-duration: .2s;
-}
-
-.companyMenu a:hover {
-	border: 2px solid #aaa;
-	transform: scale(1.1);
-	z-index: 20;
-}
-
-.companyMenu a img{
-    max-height: 30px;
-    vertical-align: middle;
-    margin-top: -3px;
-}
 
 /* Dropdown From w3 */
 	.dropbtn {
-	    background-color: #444;
+	    background-color: #409cd5;
 	    color: white;
 	    padding: 10px 14px;
 	    font-size: 15px;
@@ -32,14 +10,10 @@
 	    cursor: pointer;
 		margin-bottom: 5px;
 		transition-duration: .3s;
-	}
+	}	
 	.dropbtn:after {
 		/* kí tự mũi tên > */
 	    content: ' \25B7';
-	}
-	.dropdown:hover .dropbtn:after{
-		/* kí tự mũi tên xuống */
-		content:' \25BD'
 	}
 	.dropdown {
 	    position: relative;
@@ -71,7 +45,7 @@
 	    transform: rotateY(0deg);
 	}
 	.dropdown:hover .dropbtn {
-	    background-color: #3e8e41;
+	    background-color: #ee1616;
 	}
 /* ============== End From W3 ============== */
 
@@ -146,12 +120,12 @@
 	margin:	0 auto;
 	padding: .5em 1em;
 	border-radius: 1em;
-	color: #888;
+	color: #2c2a2a;
 	background-color: #eee;
 	transition-duration: .2s;
 	transform: translateY(1em);
 }
 .xemTatCa:hover {
-	background-color: #ccc;
+	background-color: #f8ef00;
 	color: #000;
 }

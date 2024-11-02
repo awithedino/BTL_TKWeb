@@ -101,7 +101,7 @@ hr {
     bottom: 15px;
     right: 15px;
     z-index: 100;
-    background: rgba(0, 0, 0, .2);
+    background: rgba(67, 106, 154, 0.2);
     color: #fff;
     font-size: 18px;
     border-radius: 50%;
@@ -177,34 +177,6 @@ hr {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-}
-
-/* animation ping from thegioididong */
-.dot {
-    width: 10px;
-    height: 10px;
-    background-color: #f33;
-    border-radius: 100%;
-    display: block;
-}
-
-.dot .ping {
-    border: 1px solid #f33;
-    width: 10px;
-    height: 10px;
-    opacity: 1;
-    background-color: rgba(238, 46, 36, .2);
-    border-radius: 100%;
-    -webkit-animation-duration: 1.25s;
-    animation-duration: 1.25s;
-    -webkit-animation-name: sonar;
-    animation-name: sonar;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    display: block;
-    margin: -1px 0 0 -1px;
 }
 
 @keyframes sonar {

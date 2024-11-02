@@ -193,10 +193,6 @@ function addProductsFrom(list, vitri, soluong) {
 	}
 }
 
-function clearAllProducts() {
-	document.getElementById('products').innerHTML = "";
-}
-
 // Thêm sản phẩm vào các khung sản phẩm
 function addKhungSanPham(tenKhung, color, filter, len, ele) {
 	// convert color to code
@@ -207,7 +203,7 @@ function addKhungSanPham(tenKhung, color, filter, len, ele) {
 
 	// mở tag
 	var s = `<div class="khungSanPham" style="` + borderColor + `">
-				<h3 class="tenKhung" style="` + gradient + `">* ` + tenKhung + ` *</h3>
+				<h3 class="tenKhung" style="` + gradient + `"> ` + tenKhung + ` </h3>
 				<div class="listSpTrongKhung flexContain">`;
 
 	// thêm các <li> (sản phẩm) vào tag
@@ -320,7 +316,6 @@ function timKiemTheoKhuyenMai(list, tenKhuyenMai, soluong) {
 			if (count <= 0) break;
 		}
 	}
-
 	return result;
 }
 
@@ -355,9 +350,6 @@ function addAllChoosedFilter() {
 
 	if (filtersFromUrl.promo != '')
 		addChoosedFilter('promo', promoToString(filtersFromUrl.promo));
-
-	if (filtersFromUrl.star != '')
-		addChoosedFilter('star', starToString(filtersFromUrl.star));
 
 	if (filtersFromUrl.sort.by != '') {
 		var sortBy = sortToString(filtersFromUrl.sort.by);
@@ -442,14 +434,6 @@ function getLiArray() {
 	var ul = document.getElementById('products');
 	var listLi = ul.getElementsByTagName('li');
 	return listLi;
-}
-
-// lọc theo tên
-function getNameFromLi(li) {
-	var a = li.getElementsByTagName('a')[0];
-	var h3 = a.getElementsByTagName('h3')[0];
-	var name = h3.innerHTML;
-	return name;
 }
 
 function filterProductsName(ele) {
@@ -545,19 +529,5 @@ function promoToString(name) {
 			return 'Giá rẻ online';
 		case 'moiramat':
 			return 'Mới ra mắt';
-	}
-}
-
-// Chuyển các loại sắp xếp về dạng chuỗi tiếng việt
-function sortToString(sortBy) {
-	switch (sortBy) {
-		case 'price':
-			return 'Giá ';
-		case 'rateCount':
-			return 'Đánh giá ';
-		case 'name':
-			return 'Tên ';
-		default:
-			return '';
 	}
 }
