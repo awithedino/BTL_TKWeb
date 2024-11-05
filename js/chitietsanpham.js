@@ -1,6 +1,5 @@
 var nameProduct, maProduct, sanPhamHienTai; // Tên sản phẩm trong trang này, 
-// là biến toàn cục để có thể dùng ở bát cứ đâu trong trang
-// không cần tính toán lấy tên từ url nhiều lần
+// là biến toàn cục để có thể dùng ở bất cứ đâu
 
 window.onload = function () {
     khoiTao();

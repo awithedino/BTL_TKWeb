@@ -77,13 +77,13 @@ function themVaoGioHang(masp, productName) {
         guestCart.push({ ma: masp, soluong: 1, date: new Date() });
     }
 
-    localStorage.setItem("guestCart", JSON.stringify(guestCart));
-    addAlertBox(`Đã thêm ${productName} vào giỏ hàng`, '#4CAF50', '#fff', 3000);
-    
-    capNhat_ThongTin_CurrentUser();
-}
+        localStorage.setItem("guestCart", JSON.stringify(guestCart));
+        addAlertBox(`Đã thêm ${productName} vào giỏ hàng`, '#4CAF50', '#fff', 3000);
+        
+        capNhat_ThongTin_CurrentUser();
+    }
 
-function getListUser() {
+    function getListUser() {
     var data = JSON.parse(window.localStorage.getItem('ListUser')) || [];
     var l = [];
     for (var d of data) {

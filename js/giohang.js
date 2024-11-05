@@ -1,20 +1,26 @@
-var cart = []; // Global cart variable to hold products
+// Khởi tạo cart từ localStorage
+let cart = JSON.parse(localStorage.getItem("guestCart")) || [];
+
+// Hàm để lưu cart vào localStorage
+function setCart(newCart) {
+    localStorage.setItem("guestCart", JSON.stringify(newCart));
+    cart = newCart; // Cập nhật biến cart toàn cục
+}
+
+// Load dữ liệu và cập nhật bảng khi trang được tải
 window.onload = function () {
     khoiTao();
     addProductToTable();
 
-    // Autocomplete for search box
     autocomplete(document.getElementById('search-box'), list_products);
 
-    // Adding tags (keywords) to search box
     var tags = ["Samsung", "iPhone", "Huawei", "Oppo"];
     for (var t of tags) addTags(t, "index.html?search=" + t);
 
-    // Load the cart on page load
     addProductToTable();
 }
 
-// Function to add products to the displayed table
+// Thêm sản phẩm vào bảng
 function addProductToTable() {
     const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
     const table = document.getElementsByClassName('listSanPham')[0];
@@ -39,8 +45,7 @@ function addProductToTable() {
                         Giỏ hàng trống !!
                     </h1> 
                 </td>
-            </tr>
-        `;
+            </tr>`;
         table.innerHTML = s;
         return;
     }
@@ -61,51 +66,38 @@ function addProductToTable() {
                 <td class="alignRight">${numToString(totalItemPrice)} ₫</td>
                 <td style="text-align: center">${dateAdded}</td>
                 <td class="noPadding"> <i class="fa fa-trash" onclick="xoaSanPhamTrongGioHang(${index})"></i> </td>
-            </tr>
-        `;
+            </tr>`;
         totalPrice += totalItemPrice;
     });
 
     s += `
-            <tr style="font-weight:bold; text-align:center">
-                <td colspan="4">TỔNG TIỀN: </td>
-                <td class="alignRight">${numToString(totalPrice)} ₫</td>
-                <td class="thanhtoan" onclick="thanhToan()"> Thanh Toán </td>
-                <td class="xoaHet" onclick="xoaHet()"> Xóa hết </td>
-            </tr>
-        </tbody>
-    `;
+        <tr style="font-weight:bold; text-align:center">
+            <td colspan="4">TỔNG TIỀN: </td>
+            <td class="alignRight">${numToString(totalPrice)} ₫</td>
+            <td class="thanhtoan" onclick="thanhToan()"> Thanh Toán </td>
+            <td class="xoaHet" onclick="xoaHet()"> Xóa hết </td>
+        </tr>
+    </tbody>`;
 
     table.innerHTML = s;
 }
 
-
-// Function to remove a product from the cart
+// Xóa sản phẩm trong giỏ hàng
 function xoaSanPhamTrongGioHang(index) {
-    // Lấy giỏ hàng từ localStorage
     let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
 
-    // Xóa sản phẩm ở vị trí 'index' khỏi mảng guestCart
     if (index >= 0 && index < guestCart.length) {
         guestCart.splice(index, 1);
-
-        // Cập nhật lại guestCart trong localStorage
-        localStorage.setItem("guestCart", JSON.stringify(guestCart));
-
-        // Hiển thị thông báo sản phẩm đã được xóa
+        setCart(guestCart); // Cập nhật lại cart trong localStorage
         addAlertBox("Sản phẩm đã được xóa khỏi giỏ hàng", "#FF6347", "#fff", 3000);
-
-        // Cập nhật lại giao diện bảng giỏ hàng
         addProductToTable();
-
-        // Cập nhật số lượng trên biểu tượng giỏ hàng
         capNhat_ThongTin_CurrentUser();
     } else {
         addAlertBox("Không thể xóa sản phẩm", "#FF6347", "#fff", 3000);
     }
 }
 
-// Function to process the payment
+// Thanh toán giỏ hàng
 function thanhToan() {
     const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
     if (!guestCart.length) {
@@ -121,15 +113,13 @@ function thanhToan() {
     }
 }
 
-// Function to clear the cart
+// Xóa hết giỏ hàng
 function xoaHet() {
     const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
     if (guestCart.length) {
         if (window.confirm('Bạn có chắc chắn muốn xóa hết sản phẩm trong giỏ !!')) {
-            localStorage.removeItem("guestCart"); // Xóa hoàn toàn khỏi localStorage
-
+            localStorage.removeItem("guestCart");
             addAlertBox("Đã xóa toàn bộ sản phẩm trong giỏ hàng", "#FF6347", "#fff", 3000);
-
             addProductToTable();
             capNhat_ThongTin_CurrentUser();
         }
@@ -138,57 +128,43 @@ function xoaHet() {
     }
 }
 
-// Update quantity from input
+// Cập nhật số lượng sản phẩm
 function capNhatSoLuongFromInput(inp, masp) {
-    var soLuongMoi = Number(inp.value);
-    if (!soLuongMoi || soLuongMoi <= 0) soLuongMoi = 1;
+    const soLuongMoi = Number(inp.value) > 0 ? Number(inp.value) : 1;
 
-    for (var p of cart) {
+    for (let p of cart) {
         if (p.ma == masp) {
             p.soluong = soLuongMoi;
         }
     }
-
+    setCart(cart);
     capNhatMoiThu();
 }
 
-// Increase quantity
+// Tăng và giảm số lượng sản phẩm
 function tangSoLuong(masp) {
-    for (var p of cart) {
+    for (let p of cart) {
         if (p.ma == masp) {
             p.soluong++;
         }
     }
-
+    setCart(cart);
     capNhatMoiThu();
 }
 
-// Decrease quantity
 function giamSoLuong(masp) {
-    for (var p of cart) {
-        if (p.ma == masp) {
-            if (p.soluong > 1) {
-                p.soluong--;
-            } else {
-                return;
-            }
+    for (let p of cart) {
+        if (p.ma == masp && p.soluong > 1) {
+            p.soluong--;
         }
     }
-
+    setCart(cart);
     capNhatMoiThu();
 }
 
-// Update everything
+// Cập nhật toàn bộ giao diện
 function capNhatMoiThu() { 
     animateCartNumber();
-
-    // Update the product list in local storage or wherever it needs to be stored
-    setCart(cart); // Ensure setCart is defined to manage cart storage
-
-    // Update the product list in the table
     addProductToTable();
-
-    // Update on header if needed
     capNhat_ThongTin_CurrentUser();
 }
-
